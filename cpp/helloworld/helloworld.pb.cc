@@ -96,14 +96,16 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
 const char descriptor_table_protodef_helloworld_2eproto[] =
   "\n\020helloworld.proto\022\nhelloworld\"\034\n\014HelloR"
   "equest\022\014\n\004name\030\001 \001(\t\"\035\n\nHelloReply\022\017\n\007me"
-  "ssage\030\001 \001(\t2I\n\007Greeter\022>\n\010SayHello\022\030.hel"
-  "loworld.HelloRequest\032\026.helloworld.HelloR"
-  "eply\"\000B\t\n\007ex.grpcb\006proto3"
+  "ssage\030\001 \001(\t2\216\001\n\007Greeter\022>\n\010SayHello\022\030.he"
+  "lloworld.HelloRequest\032\026.helloworld.Hello"
+  "Reply\"\000\022C\n\rSayHelloAgain\022\030.helloworld.He"
+  "lloRequest\032\026.helloworld.HelloReply\"\000B\t\n\007"
+  "ex.grpcb\006proto3"
   ;
 ::google::protobuf::internal::DescriptorTable descriptor_table_helloworld_2eproto = {
   false, InitDefaults_helloworld_2eproto, 
   descriptor_table_protodef_helloworld_2eproto,
-  "helloworld.proto", &assign_descriptors_table_helloworld_2eproto, 185,
+  "helloworld.proto", &assign_descriptors_table_helloworld_2eproto, 255,
 };
 
 void AddDescriptors_helloworld_2eproto() {
