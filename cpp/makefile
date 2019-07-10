@@ -8,8 +8,8 @@ all:
 	make -C helloworld
 
 	#search
-	protoc - I ../protos -cpp_out=search ../protos/search.prpto
-	protoc -I ../protos --grpc_out=serach --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` ../protos/search.proto
+	protoc -I ../protos --cpp_out=search ../protos/search.proto
+	protoc -I ../protos --grpc_out=search --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` ../protos/search.proto
 
 .PHONY:clean
 
