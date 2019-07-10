@@ -15,8 +15,8 @@ using grpc::Status;
 class SearchClient{
 
     public:
-        SearchClient(std::shared_ptr<Channel> channel
-        : stub_(SearchService::NewStub(channel))){};
+        SearchClient(std::shared_ptr<Channel> channel)
+        : stub_(SearchService::NewStub(channel)){}
     
         std::string Search(const std::string& user){
             SearchRequest request;
@@ -34,7 +34,7 @@ class SearchClient{
             }else{
                 std::cout << status.error_code()<<": "<< status.error_message()<<std::endl;
             }
-            return "RPC failed"
+            return "RPC failed";
 
         }
 
