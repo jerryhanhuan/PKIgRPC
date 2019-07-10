@@ -20,8 +20,8 @@ client_obj = greeter_client.o
 	$(CC) $(DEFINES) -c $< 
 
 
-client:$(client_obj) $(grpc_obj)
-	$(CC) -o $@ $^ $(LIBS)
+client:$(client_obj) $(grpc_obj) $(LIBS)
+	$(CC) -o $@ $^ 
 
 server:$(server_obj) $(grpc_obj) $(LIBS)
 	$(CC) -o $@ $^
