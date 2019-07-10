@@ -37,7 +37,8 @@ class SearchClient{
             return "RPC failed";
 
         }
-
+private:
+		std::unique_ptr<SearchService::Stub> stub_;
 
 };
 
