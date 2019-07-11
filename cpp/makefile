@@ -10,6 +10,7 @@ all:
 	#search
 	protoc -I ../protos --cpp_out=search ../protos/search.proto
 	protoc -I ../protos --grpc_out=search --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` ../protos/search.proto
+	make -C search
 
 .PHONY:clean
 
