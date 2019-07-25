@@ -15,11 +15,17 @@ all:
 	#random
 	protoc -I ../protos --cpp_out=random ../protos/random.proto
 	protoc -I ../protos --grpc_out=random --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` ../protos/random.proto
+	make -C random
 
-
+	#digest
+	protoc -I ../protos --cpp_out=digest ../protos/digest.proto
+	protoc -I ../protos --grpc_out=digest --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` ../protos/digest.proto
+	make -C digest
 
 .PHONY:clean
 
 clean:
 	make clean -C helloworld
 	make clean -C search
+	make clean -C random
+	make clean -C digest

@@ -58,9 +58,9 @@ int main(int argc, char **argv)
         int i = 0;
         for(i=0;i<size;i++)
         {
-            printf("%02X",data[i])
+            printf("%02X",data[i]);
         }
-        print('\n');
+        printf("\n");
     }
     return 0;
 }
