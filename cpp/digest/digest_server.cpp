@@ -36,7 +36,7 @@ class DigestServiceImpl final : public DigestService::Service
             count++;
         }
         unsigned char digest[32] = {0x12, 0x34, 0x00, 0x56, 0x78, 0xAB, 0xCD, 0xEF, 0xEF, 0xCD, 0xAB, 0x78, 0x56, 0x00, 0x34, 0x12};
-        response->set_digest(digest);
+        response->set_digest((char*)digest);
         return Status::OK;
     }
 };

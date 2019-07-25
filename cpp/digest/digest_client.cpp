@@ -6,8 +6,12 @@
 
 #include "digest.grpc.pb.h"
 
+
 using grpc::Channel;
 using grpc::ClientContext;
+using grpc::ClientReader;
+using grpc::ClientReaderWriter;
+using grpc::ClientWriter;
 using grpc::Status;
 
 using std::cout;
@@ -15,7 +19,7 @@ using std::endl;
 
 class DigestClient
 {
-
+	public:
     DigestClient(std::shared_ptr<Channel> channel)
         : stub_(DigestService::NewStub(channel)) {}
 
@@ -26,7 +30,7 @@ class DigestClient
         ClientContext context;
         DigestResponse response;
         DigestRequest request;
-        char digest_alg = "SHA1";
+        char *digest_alg = "SHA1";
         std::unique_ptr<ClientWriter<DigestRequest>> cli_writer(
             stub_->Digest(&context, &response));
         int i = 0;
@@ -34,7 +38,8 @@ class DigestClient
         for (i = 0; i < 3; i++)
         {
             request.set_transformation(digest_alg);
-            request.set_messages(msg[i]);
+			std::string msg = msg[i];
+            request.set_messages(msg);
             if (!cli_writer->Write(request))
                 break;
         }
