@@ -23,20 +23,22 @@ class DigestServiceImpl final : public DigestService::Service
         char digest_alg[32] = {0};
         unsigned char data[8192] = {0};
         int count = 0;
-        while (reader->Read(&request))
+        while (reader->Read(&request));
+        for (auto &msg : request.messages())
         {
             if (count == 0)
             {
                 strncpy(digest_alg, request.transformation().data(), request.transformation().size());
                 cout << "digest_alg:" << digest_alg << endl;
             }
-            cout << "size:"<<request.messages().size()<< "msg:"<<request.messages().data()<<endl;
             memset(data, 0, sizeof(data));
-            memcpy(data, request.messages().data(), request.messages().size());
+            cout << "size:" << msg.size() << "  msg:" << msg.data() << endl;
+            memcpy(data, msg.data(), msg.size());
             count++;
         }
+
         unsigned char digest[32] = {0x12, 0x34, 0x00, 0x56, 0x78, 0xAB, 0xCD, 0xEF, 0xEF, 0xCD, 0xAB, 0x78, 0x56, 0x00, 0x34, 0x12};
-        response->set_digest((char*)digest);
+        response->set_digest(digest, 16);
         return Status::OK;
     }
 };
