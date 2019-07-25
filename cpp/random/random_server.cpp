@@ -19,7 +19,7 @@ using grpc::Status;
 
 class RandomServiceImpl final : public  RandomService::Service
 {
-    Status Generate(ServerContext* context, RandomRequest* request, RandomResponse* response)
+    Status Generate(ServerContext* context, RandomRequest* request, RandomResponse* response) override
     {
         int len = request->size();
         cout << "random len is:"<< len <<endl;
