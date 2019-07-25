@@ -38,6 +38,7 @@ class SearchClient{
 
         }
 private:
+        // 注意，这个不要忘
 		std::unique_ptr<SearchService::Stub> stub_;
 
 };
