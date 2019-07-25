@@ -40,7 +40,7 @@ class DigestClient
         {
             request.set_transformation(digest_alg);
 			std::string msg = msg[i];
-            request.set_messages(i, msg);
+            request.add_messages(msg);
             if (!cli_writer->Write(request))
                 break;
         }
