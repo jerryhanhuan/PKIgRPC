@@ -35,11 +35,11 @@ class DigestClient
         std::unique_ptr<ClientWriter<DigestRequest>> cli_writer(
             stub_->Digest(&context, &response));
         int i = 0;
-        char msg[3][256] = {"1111", "2222", "3333"};
+        char cmsg[3][256] = {"1111", "2222", "3333"};
         for (i = 0; i < 3; i++)
         {
             request.set_transformation(digest_alg);
-			std::string msg = msg[i];
+			std::string msg = cmsg[i];
             request.add_messages(msg);
             cout << "size:"<<request.messages().size()<< "msg:"<<request.messages().data()<<endl;
             if (!cli_writer->Write(request))
