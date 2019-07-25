@@ -19,8 +19,7 @@ using grpc::Status;
 
 class RandomServiceImpl final : public  RandomService::Service
 {
-    Status Generate(ServerContext* context, RandomRequest* request, RandomResponse* response) override
-    {
+    Status Generate(ServerContext* context, const RandomRequest* request, RandomResponse* response) override{
         int len = request->size();
         cout << "random len is:"<< len <<endl;
         unsigned char data[128]="0123456789ABCDEF0123456789ABCDEF";
