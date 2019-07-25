@@ -39,13 +39,15 @@ class DigestClient
         for (i = 0; i < 3; i++)
         {
             request.set_transformation(digest_alg);
-			std::string msg = cmsg[i];
+			std::string msg = cmsg[i] ;
             request.add_messages(msg);
             cout << "size:"<<request.messages().size()<< "msg:"<<request.messages().data()<<endl;
             if (!cli_writer->Write(request))
                 break;
         }
+        //WritesDone() 通知gRPC 我们已经完成输入
         cli_writer->WritesDone();
+        //Finish() 完成调用同时拿到 RPC 的状态
         Status status = cli_writer->Finish();
         if (status.ok())
         {
