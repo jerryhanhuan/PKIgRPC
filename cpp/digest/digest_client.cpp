@@ -30,7 +30,8 @@ class DigestClient
         ClientContext context;
         DigestResponse response;
         DigestRequest request;
-        char *digest_alg = "SHA1";
+        char digest_alg[32] = {0};
+        strcpy(digest_alg,"SHA1");
         std::unique_ptr<ClientWriter<DigestRequest>> cli_writer(
             stub_->Digest(&context, &response));
         int i = 0;
@@ -39,7 +40,7 @@ class DigestClient
         {
             request.set_transformation(digest_alg);
 			std::string msg = msg[i];
-            request.set_messages(msg);
+            request.set_messages(i, msg);
             if (!cli_writer->Write(request))
                 break;
         }
