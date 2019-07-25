@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+service RandomService {
+    // 产生随机数，预期不会产生过长的随机数，所以响应不设计为流式
+    rpc Generate (RandomRequest) returns (RandomResponse) {}
+}
+
+// size 的有效范围在 0 - 1M 之内
+message RandomRequest {
+    int32 size = 1;
+}
+
+message RandomResponse {
+    bytes random = 1;
+}
+
+
+
+

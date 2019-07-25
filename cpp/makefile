@@ -12,6 +12,12 @@ all:
 	protoc -I ../protos --grpc_out=search --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` ../protos/search.proto
 	make -C search
 
+	#random
+	protoc -I ../protos --cpp_out=random ../protos/random.proto
+	protoc -I ../protos --grpc_out=random --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` ../protos/random.proto
+
+
+
 .PHONY:clean
 
 clean:
