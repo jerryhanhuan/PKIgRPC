@@ -22,7 +22,7 @@ class RandomServiceImpl final : public  RandomService::Service
     Status Generate(ServerContext* context, const RandomRequest* request, RandomResponse* response) override{
         int len = request->size();
         cout << "random len is:"<< len <<endl;
-        unsigned char data[128]="0123456789ABCDEF0123456789ABCDEF";
+        unsigned char data[128]={0x12,0x34,0x00,0x56,0x78,0xAB,0xCD,0xEF,0xEF,0xCD,0xAB,0x78,0x56,0x00,0x34,0x12};
         response->set_random(data,len);
         return Status::OK;
     }

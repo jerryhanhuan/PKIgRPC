@@ -55,7 +55,12 @@ int main(int argc, char **argv)
     {
         std::cout << "Random failed !"<< endl;
     }else{
-        printf("data::%s .\n",data);
+        int i = 0;
+        for(i=0;i<size;i++)
+        {
+            printf("%02X",data[i])
+        }
+        print('\n');
     }
     return 0;
 }
