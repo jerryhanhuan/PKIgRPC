@@ -32,7 +32,7 @@ public:
         Status status = stub_->Generate(&context, request, &response);
         if(status.ok())
         {
-                memcpy(randdata, response.random().c_str(),size);
+                memcpy(randdata, response.random().data(),response.random().size());
                 return size;
         }else{
             std::cout << status.error_code() << ": " << status.error_message() << std::endl;
