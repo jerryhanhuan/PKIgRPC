@@ -64,3 +64,16 @@ private:
     // 注意，这个不要忘
     std::unique_ptr<Greeter::Stub> stub_;
 };
+
+
+int main(int argc, char **argv)
+{
+
+    StreamClient cli(grpc::CreateChannel("localhost:50051", grpc::InsecureChannelCredentials()));
+
+    if (cli.getStream() < 0)
+    {
+        std::cout << "hash failed !" << endl;
+    }
+    return 0;
+}
