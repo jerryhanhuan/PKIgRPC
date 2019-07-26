@@ -33,13 +33,13 @@ public:
 
         requset.set_req_data("client get server stream");
         std::unique_ptr<ClientReader<StreamResData>> cli_writer(
-            stub_->GetStream(&context, &requset));
+            stub_->GetStream(&context, requset));
 
-        while (ClientReader->Read(&response))
+        while (cli_writer->Read(&response))
         {
             cout << "res::" << response.res_data() << endl;
         }
-        Status status = ClientReader->Finish();
+        Status status = cli_writer->Finish();
         if (!status.ok())
         {
             std::cout << status.error_code() << ": " << status.error_message() << std::endl;
