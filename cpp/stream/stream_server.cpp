@@ -13,6 +13,7 @@ using grpc::ServerContext;
 using grpc::ServerReader;
 using grpc::ServerWriter;
 using grpc::Status;
+using grpc::ServerReaderWriter;
 
 using std::cout;
 using std::endl;
@@ -24,11 +25,11 @@ class streamServiceImpl final: public Greeter::Service{
     // 服务端给客户端返回一个流式数据
     Status GetStream(ServerContext* context, const StreamReqData* request, ServerWriter<StreamResData> writer) override
     {
-            std::string req = request.req_data()
+            std::string req = request -> req_data()
             cout << "req::" << req <<endl;
             int i = 0;
             StreamResData response;
-            char msg[3][256]={"1111","2222","3333"}
+            char msg[3][256]={"1111","2222","3333"};
             for(i = 0; i< 3;i++)
             {
                 response.set_res_data(msg[i]);
