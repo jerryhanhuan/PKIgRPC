@@ -23,7 +23,7 @@ class streamServiceImpl final: public Greeter::Service{
 
     // 服务端流式
     // 服务端给客户端返回一个流式数据
-    Status GetStream(ServerContext* context, const StreamReqData* request, ServerWriter<StreamResData> writer) override
+    Status GetStream(ServerContext* context, const StreamReqData* request, ServerWriter<StreamResData>* writer) override
     {
             std::string req = request -> req_data();
             cout << "req::" << req <<endl;
@@ -33,7 +33,7 @@ class streamServiceImpl final: public Greeter::Service{
             for(i = 0; i< 3;i++)
             {
                 response.set_res_data(msg[i]);
-                writer.Write(response);
+                writer->Write(response);
             }
             return Status::OK;
     }
