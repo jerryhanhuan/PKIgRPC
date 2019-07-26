@@ -23,7 +23,7 @@ class DigestServiceImpl final : public DigestService::Service
         char digest_alg[32] = {0};
         unsigned char data[8192] = {0};
         int count = 0;
-        while (reader->Read(&request));
+        while (reader->Read(&request)); // read client stream
         for (auto &msg : request.messages())
         {
             if (count == 0)
