@@ -25,7 +25,7 @@ class streamServiceImpl final: public Greeter::Service{
     // 服务端给客户端返回一个流式数据
     Status GetStream(ServerContext* context, const StreamReqData* request, ServerWriter<StreamResData> writer) override
     {
-            std::string req = request -> req_data()
+            std::string req = request -> req_data();
             cout << "req::" << req <<endl;
             int i = 0;
             StreamResData response;
@@ -46,7 +46,7 @@ class streamServiceImpl final: public Greeter::Service{
             StreamReqData request;
             while(reader->Read(&request))
             {
-                std::string req = requset.req_data();
+                std::string req = request.req_data();
                 cout << "req::"<<req <<endl;
             }
             response->set_res_data("recv ok");
