@@ -22,6 +22,13 @@ all:
 	protoc -I ../protos --grpc_out=digest --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` ../protos/digest.proto
 	make -C digest
 
+
+	#stream
+	protoc -I ../protos --cpp_out=stream ../protos/stream.proto
+	protoc -I ../protos --grpc_out=stream --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` ../protos/stream.proto
+
+
+
 .PHONY:clean
 
 clean:
