@@ -26,7 +26,7 @@ all:
 	#stream
 	protoc -I ../protos --cpp_out=stream ../protos/stream.proto
 	protoc -I ../protos --grpc_out=stream --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` ../protos/stream.proto
-
+	make -C stream
 
 
 .PHONY:clean
@@ -36,3 +36,4 @@ clean:
 	make clean -C search
 	make clean -C random
 	make clean -C digest
+	make clean -C stream
