@@ -68,10 +68,11 @@ class streamServiceImpl final : public Greeter::Service
 
         StreamResData response;
         char msg[3][256] = {"1111", "2222", "3333"};
+		int i = 0;
         for (i = 0; i < 3; i++)
         {
             response.set_res_data(msg[i]);
-            writer->Write(response);
+			stream->Write(response);
         }
         return Status::OK;
     }
