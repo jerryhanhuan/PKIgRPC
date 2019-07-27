@@ -5,7 +5,12 @@ service Greeter {
    /*
    以下 分别是 服务端 推送流， 客户端 推送流 ，双向流。
    */
+
+  // 通过在响应类型前插入 stream 关键字，可以指定一个服务端的流方法
   rpc GetStream (StreamReqData) returns (stream StreamResData){}
+
+
+  // 通过在请求类型前插入 stream 关键字，可以指定一个客户端的流方法
   rpc PutStream (stream StreamReqData) returns (StreamResData){}
   rpc AllStream (stream StreamReqData) returns (stream StreamResData){}
 }
