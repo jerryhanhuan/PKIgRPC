@@ -12,7 +12,7 @@ using grpc::ClientReader;
 using grpc::ClientWriter;
 using grpc::Status;
 
-
+using grpc::ClientReaderWriter;
 
 class StreamClient
 {

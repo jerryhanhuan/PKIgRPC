@@ -58,6 +58,7 @@ class streamServiceImpl final : public Greeter::Service
     Status AllStream(ServerContext *context, ServerReaderWriter<StreamResData, StreamReqData> *stream) override
     {
 
+		cout << " ============ Double Stream   ============  " << endl;
         // 这里的示例是 先读取所有客户端输入，再返回流到客户端
         StreamReqData request;
         while (stream->Read(&request))
