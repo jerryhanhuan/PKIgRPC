@@ -71,7 +71,8 @@ public:
         //WritesDone() 通知gRPC 我们已经完成输入
         cli_writer->WritesDone();
         //Finish() 完成调用同时拿到 RPC 的状态
-        Status status = cli_writer->Finish() if (status.ok())
+        Status status = cli_writer->Finish();
+         if (status.ok())
         {
             std::string result = response.res_data();
             std::cout << "res::" << result << std::endl;
@@ -103,12 +104,12 @@ int main(int argc, char **argv)
     std::cout << " ========================= server stream =========================" <<std::endl;
     if (cli.getStream() < 0)
     {
-        std::cout << "getStream failed !" << endl;
+        std::cout << "getStream failed !" << std::endl;
     }
     std::cout << " ========================= client stream =========================" <<std::endl;
     if (cli.putStream() < 0)
     {
-        std::cout << "putStream failed !"<<endl;
+        std::cout << "putStream failed !"<< std::endl;
     }
     return 0;
 }
