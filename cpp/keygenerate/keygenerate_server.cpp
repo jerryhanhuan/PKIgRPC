@@ -32,8 +32,10 @@ class KeyGenerateServiceImpl final : public KeyGenerateService::Service {
             }else if(!sm2head.compare(request -> transformation()))
             {
                 //SM2
-                response -> set_private_key(vk, 32);
-                response -> set_public_key(pk, 64);
+                KeyGenerateResponse_KeyPair keypair;
+                keypair.set_private_key(vk, 32);
+                keypair.set_public_key(pk, 64);
+                response -> set_allocated_key_pair(&keypair);
             }
             return Status::OK;
     }
