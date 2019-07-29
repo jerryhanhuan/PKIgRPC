@@ -28,6 +28,10 @@ all:
 	protoc -I ../protos --grpc_out=stream --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` ../protos/stream.proto
 	make -C stream
 
+	# keygenerate
+	protoc -I ../protos --cpp_out=keygenerate ../protos/keygenerate.proto
+	protoc -I ../protos --grpc_out=stream --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` ../protos/keygenerate.proto
+	make -C keygenerate
 
 .PHONY:clean
 
@@ -37,3 +41,4 @@ clean:
 	make clean -C random
 	make clean -C digest
 	make clean -C stream
+	make clean -C keygenerate

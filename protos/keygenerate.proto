@@ -1,0 +1,118 @@
+syntax = "proto3";
+
+service KeyGenerateService {
+    // 生成对称密钥和非对称密钥对
+    //      * 建议在生成 RSA 公钥的时候使用异步的调用方式
+    rpc Generate (KeyGenerateRequest) returns (KeyGenerateResponse) {}
+}
+
+// transformation 算法信息
+//      * 该参数大小写不敏感
+//      * 支持的算法包括：AES，DES，SM4，RSA，EC（SM2）
+// key_size 密钥的长度信息，单位为二进制位 （bit）
+//      * DES - 64/128/192 bits
+//      * AES - 128/192/256 bits
+//      * SM4 - 128 bits
+//      * RSA - 1024/2048/4096/8192 bits
+//      * EC - 不使用该参数
+// curve 当算法为 EC 算法的时候使用的曲线名称
+//      * 主要包括以下曲线，优先实现：prime256v1，SM2
+//          - secp112r1 : SECG/WTLS curve over a 112 bit prime field
+//          - secp112r2 : SECG curve over a 112 bit prime field
+//          - secp128r1 : SECG curve over a 128 bit prime field
+//          - secp128r2 : SECG curve over a 128 bit prime field
+//          - secp160k1 : SECG curve over a 160 bit prime field
+//          - secp160r1 : SECG curve over a 160 bit prime field
+//          - secp160r2 : SECG/WTLS curve over a 160 bit prime field
+//          - secp192k1 : SECG curve over a 192 bit prime field
+//          - secp224k1 : SECG curve over a 224 bit prime field
+//          - secp224r1 : NIST/SECG curve over a 224 bit prime field
+//          - secp256k1 : SECG curve over a 256 bit prime field
+//          - secp384r1 : NIST/SECG curve over a 384 bit prime field
+//          - secp521r1 : NIST/SECG curve over a 521 bit prime field
+//          - prime192v1: NIST/X9.62/SECG curve over a 192 bit prime field
+//          - prime192v2: X9.62 curve over a 192 bit prime field
+//          - prime192v3: X9.62 curve over a 192 bit prime field
+//          - prime239v1: X9.62 curve over a 239 bit prime field
+//          - prime239v2: X9.62 curve over a 239 bit prime field
+//          - prime239v3: X9.62 curve over a 239 bit prime field
+//          - prime256v1: X9.62/SECG curve over a 256 bit prime field
+//          - sect113r1 : SECG curve over a 113 bit binary field
+//          - sect113r2 : SECG curve over a 113 bit binary field
+//          - sect131r1 : SECG/WTLS curve over a 131 bit binary field
+//          - sect131r2 : SECG curve over a 131 bit binary field
+//          - sect163k1 : NIST/SECG/WTLS curve over a 163 bit binary field
+//          - sect163r1 : SECG curve over a 163 bit binary field
+//          - sect163r2 : NIST/SECG curve over a 163 bit binary field
+//          - sect193r1 : SECG curve over a 193 bit binary field
+//          - sect193r2 : SECG curve over a 193 bit binary field
+//          - sect233k1 : NIST/SECG/WTLS curve over a 233 bit binary field
+//          - sect233r1 : NIST/SECG/WTLS curve over a 233 bit binary field
+//          - sect239k1 : SECG curve over a 239 bit binary field
+//          - sect283k1 : NIST/SECG curve over a 283 bit binary field
+//          - sect283r1 : NIST/SECG curve over a 283 bit binary field
+//          - sect409k1 : NIST/SECG curve over a 409 bit binary field
+//          - sect409r1 : NIST/SECG curve over a 409 bit binary field
+//          - sect571k1 : NIST/SECG curve over a 571 bit binary field
+//          - sect571r1 : NIST/SECG curve over a 571 bit binary field
+//          - c2pnb163v1: X9.62 curve over a 163 bit binary field
+//          - c2pnb163v2: X9.62 curve over a 163 bit binary field
+//          - c2pnb163v3: X9.62 curve over a 163 bit binary field
+//          - c2pnb176v1: X9.62 curve over a 176 bit binary field
+//          - c2tnb191v1: X9.62 curve over a 191 bit binary field
+//          - c2tnb191v2: X9.62 curve over a 191 bit binary field
+//          - c2tnb191v3: X9.62 curve over a 191 bit binary field
+//          - c2pnb208w1: X9.62 curve over a 208 bit binary field
+//          - c2tnb239v1: X9.62 curve over a 239 bit binary field
+//          - c2tnb239v2: X9.62 curve over a 239 bit binary field
+//          - c2tnb239v3: X9.62 curve over a 239 bit binary field
+//          - c2pnb272w1: X9.62 curve over a 272 bit binary field
+//          - c2pnb304w1: X9.62 curve over a 304 bit binary field
+//          - c2tnb359v1: X9.62 curve over a 359 bit binary field
+//          - c2pnb368w1: X9.62 curve over a 368 bit binary field
+//          - c2tnb431r1: X9.62 curve over a 431 bit binary field
+//          - wap-wsg-idm-ecid-wtls1: WTLS curve over a 113 bit binary field
+//          - wap-wsg-idm-ecid-wtls3: NIST/SECG/WTLS curve over a 163 bit binary field
+//          - wap-wsg-idm-ecid-wtls4: SECG curve over a 113 bit binary field
+//          - wap-wsg-idm-ecid-wtls5: X9.62 curve over a 163 bit binary field
+//          - wap-wsg-idm-ecid-wtls6: SECG/WTLS curve over a 112 bit prime field
+//          - wap-wsg-idm-ecid-wtls7: SECG/WTLS curve over a 160 bit prime field
+//          - wap-wsg-idm-ecid-wtls8: WTLS curve over a 112 bit prime field
+//          - wap-wsg-idm-ecid-wtls9: WTLS curve over a 160 bit prime field
+//          - wap-wsg-idm-ecid-wtls10: NIST/SECG/WTLS curve over a 233 bit binary field
+//          - wap-wsg-idm-ecid-wtls11: NIST/SECG/WTLS curve over a 233 bit binary field
+//          - wap-wsg-idm-ecid-wtls12: WTLS curve over a 224 bit prime field
+//          - brainpoolP160r1: RFC 5639 curve over a 160 bit prime field
+//          - brainpoolP160t1: RFC 5639 curve over a 160 bit prime field
+//          - brainpoolP192r1: RFC 5639 curve over a 192 bit prime field
+//          - brainpoolP192t1: RFC 5639 curve over a 192 bit prime field
+//          - brainpoolP224r1: RFC 5639 curve over a 224 bit prime field
+//          - brainpoolP224t1: RFC 5639 curve over a 224 bit prime field
+//          - brainpoolP256r1: RFC 5639 curve over a 256 bit prime field
+//          - brainpoolP256t1: RFC 5639 curve over a 256 bit prime field
+//          - brainpoolP320r1: RFC 5639 curve over a 320 bit prime field
+//          - brainpoolP320t1: RFC 5639 curve over a 320 bit prime field
+//          - brainpoolP384r1: RFC 5639 curve over a 384 bit prime field
+//          - brainpoolP384t1: RFC 5639 curve over a 384 bit prime field
+//          - brainpoolP512r1: RFC 5639 curve over a 512 bit prime field
+//          - brainpoolP512t1: RFC 5639 curve over a 512 bit prime field
+//          - SM2       : SM2 curve over a 256 bit prime field
+message KeyGenerateRequest {
+    string transformation = 1;
+    int32 key_size = 2;
+    string curve = 3;
+}
+
+// key 生成的密钥值
+//      * secret_key 对称密钥值
+//      * key_pair 非对称密钥对
+message KeyGenerateResponse {
+    message KeyPair {
+        bytes public_key = 1;
+        bytes private_key = 2;
+    }
+    oneof key {
+        bytes secret_key = 1;
+        KeyPair key_pair = 2;
+    }
+}
