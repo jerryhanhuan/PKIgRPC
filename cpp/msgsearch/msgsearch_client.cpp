@@ -68,11 +68,13 @@ private:
 
 int main()
 {
+
+    msgSearchClient cli(grpc::CreateChannel("localhost:50051", grpc::InsecureChannelCredentials()));
     std::string name = "yexb";
     std::string id = "1234567";
 
-    msgSearch(name,"");
-    msgSearch("",id);
+    cli.msgSearch(name,"");
+    cli.msgSearch("",id);
 
     return 0;
 }
