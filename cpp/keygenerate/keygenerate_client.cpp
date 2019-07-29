@@ -33,34 +33,37 @@ public:
             if (response.has_secret_key())
             {
                 unsigned char key[32] = {0};
-                memcpy(key, response.secret_key(), response.secret_key().size());
+                memcpy(key, response.secret_key().data(), response.secret_key().size());
                 int i = 0;
                 printf("secret key::");
                 for (i = 0; i < response.secret_key().size(); i++)
                 {
                     printf("%02X", key[i]);
                 }
-                print("\n");
+                printf("\n");
             }
             else if (response.has_key_pair())
             {
+
+                KeyGenerateResponse_KeyPair keypair;
+                keypair = response.key_pair();
                 unsigned char vk[32] = {0};
                 unsigned char pk[64] = {0};
-                memcpy(pk, response.public_key(), response.public_key().size());
-                memcpy(vk, response.private_key(), response.private_key().size());
+                memcpy(pk, keypair.public_key(), keypair.public_key().size());
+                memcpy(vk, keypair.private_key(), keypair.private_key().size());
                 printf("vk::");
-                for (i = 0; i < response.private_key().size(); i++)
+                for (i = 0; i < keypair.private_key().size(); i++)
                 {
                     printf("%02X", vk[i]);
                 }
-                print("\n");
+                printf("\n");
 
                 printf("pk::");
-                for (i = 0; i < response.public_key().size(); i++)
+                for (i = 0; i < keypair.public_key().size(); i++)
                 {
                     printf("%02X", pk[i]);
                 }
-                print("\n");
+                printf("\n");
             }
             return 0;
         }
