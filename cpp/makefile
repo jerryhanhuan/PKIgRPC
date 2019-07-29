@@ -30,7 +30,7 @@ all:
 
 	# keygenerate
 	protoc -I ../protos --cpp_out=keygenerate ../protos/keygenerate.proto
-	protoc -I ../protos --grpc_out=stream --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` ../protos/keygenerate.proto
+	protoc -I ../protos --grpc_out=keygenerate --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` ../protos/keygenerate.proto
 	make -C keygenerate
 
 .PHONY:clean
