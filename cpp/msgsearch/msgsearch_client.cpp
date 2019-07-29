@@ -35,7 +35,7 @@ public:
         // clietn context 用来向服务器传递额外的信息，并调整某些 RPC 行为
         ClientContext context;
         //实际 RPC 调用
-        Status status = stub_->Search(&context, &request, &response);
+        Status status = stub_->Search(&context, request, &response);
         if (status.ok())
         {
             MsgResponse::RsInfoCase t_case = response.rs_info_case();
