@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+message MsgRequest{
+    oneof rq_info {
+        string name = 1;
+        string id = 2;
+    }
+}
+
+message MsgResponse{
+    one_of rs_info{
+        string address = 1;
+        string phonenumber = 2;
+    }
+}
+
+service MsgService{
+    rpc Search(MsgRequest) returns(MsgResponse) {}
+}

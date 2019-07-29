@@ -33,6 +33,11 @@ all:
 	protoc -I ../protos --grpc_out=keygenerate --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` ../protos/keygenerate.proto
 	make -C keygenerate
 
+	# msgsearch
+	protoc -I ../protos --cpp_out=msgsearch ../protos/msg.proto
+	protoc -I ../protos --grpc_out=msgsearch --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` ../protos/msg.proto
+	make -C msgsearch
+
 .PHONY:clean
 
 clean:
@@ -42,3 +47,4 @@ clean:
 	make clean -C digest
 	make clean -C stream
 	make clean -C keygenerate
+	make clean -C msgsearch
