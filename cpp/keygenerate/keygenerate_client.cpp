@@ -19,6 +19,7 @@ public:
 
     int genkey(std::string &keyType, int keysize, std::string &curve)
     {
+        int i = 0;
         KeyGenerateRequest request;
         KeyGenerateResponse response;
         request.set_transformation(keyType);
@@ -34,7 +35,7 @@ public:
             {
                 unsigned char key[32] = {0};
                 memcpy(key, response.secret_key().data(), response.secret_key().size());
-                int i = 0;
+                
                 printf("secret key::");
                 for (i = 0; i < response.secret_key().size(); i++)
                 {
@@ -86,7 +87,7 @@ int main(int argc, char **argv)
     keygenerateClient cli(grpc::CreateChannel("localhost:50051", grpc::InsecureChannelCredentials()));
 
     //sm4
-    cli.genkey("SM4",16,"");
+    cli.genkey("SM4",16,"SYM");
     cli.genkey("SM2",256,"EC");
 
     return 0;
