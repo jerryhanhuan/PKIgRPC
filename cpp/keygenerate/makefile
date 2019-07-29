@@ -12,9 +12,9 @@ LIBS = -lgrpc++ -lprotobuf -lpthread -lgrpc++_reflection
 #LIBS = `pkg-config  --libs protobuf grpc++ grpc`
 
 
-grpc_obj = keygenerat.pb.o keygenerat.grpc.pb.o 
-server_obj = keygenerat_server.o
-client_obj = keygenerat_client.o
+grpc_obj = keygenerate.pb.o keygenerate.grpc.pb.o 
+server_obj = keygenerate_server.o
+client_obj = keygenerate_client.o
 
 %.o:%.cc
 	$(CC) $(DEFINES) -c $< 
