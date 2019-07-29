@@ -31,21 +31,7 @@ public:
         Status status = stub_->Generate(&context, request, &response);
         if (status.ok())
         {
-            /* 
-            KeyCase key_s = response.key_case();
-            if (key_s == kSecretKey)
-            {
-                unsigned char key[32] = {0};
-                memcpy(key, response.secret_key().data(), response.secret_key().size());
-                
-                printf("secret key::");
-                for (i = 0; i < response.secret_key().size(); i++)
-                {
-                    printf("%02X", key[i]);
-                }
-                printf("\n");
-            }
-            else */
+
             if (response.has_key_pair())
             {
 
@@ -69,6 +55,18 @@ public:
                 }
                 printf("\n");
             }
+            else
+            {
+                unsigned char key[32] = {0};
+                memcpy(key, response.secret_key().data(), response.secret_key().size());
+
+                printf("secret key::");
+                for (i = 0; i < response.secret_key().size(); i++)
+                {
+                    printf("%02X", key[i]);
+                }
+                printf("\n");
+            }
             return 0;
         }
         else
@@ -83,21 +81,20 @@ private:
     std::unique_ptr<KeyGenerateService::Stub> stub_;
 };
 
-
 int main(int argc, char **argv)
 {
 
     keygenerateClient cli(grpc::CreateChannel("localhost:50051", grpc::InsecureChannelCredentials()));
-	
-	std::string keytype = "SM4";
-	int keylen = 16;
-	std::string curve = "SYM";
+
+    std::string keytype = "SM4";
+    int keylen = 16;
+    std::string curve = "SYM";
     //sm4
-    cli.genkey(keytype,keylen,curve);
-	keytype = "SM2";
-	keylen = 256;
-	curve = "EC";
-    cli.genkey(keytype,keylen,curve);
+    cli.genkey(keytype, keylen, curve);
+    keytype = "SM2";
+    keylen = 256;
+    curve = "EC";
+    cli.genkey(keytype, keylen, curve);
 
     return 0;
 }
