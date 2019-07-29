@@ -16,7 +16,7 @@ class MsgServiceImpl final:public MsgService::Service{
 
     Status Search(ServerContext* context, MsgRequest* request, MsgResponse* response)
     {
-        enum  RqInfoCase req_case = request.rq_info_case();
+        MsgRequest::RqInfoCase t_case = request->rq_info_case();
         return Status::OK;
     }
 
