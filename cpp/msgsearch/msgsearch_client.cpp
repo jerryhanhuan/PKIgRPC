@@ -42,11 +42,11 @@ public:
             switch (t_case)
             {
             case MsgResponse::kAddress: //has_address
-                memcpy(address, response->address().data(), response->address().size());
+                memcpy(address, response.address().data(), response.address().size());
                 printf("address::%s .\n", address);
                 break;
             case MsgResponse::kPhonenumber: //has_phonenumber
-                memcpy(phonenum, response->phonenumber().data(), response->phonenumber().size());
+                memcpy(phonenum, response.phonenumber().data(), response.phonenumber().size());
                 printf("phonenum::%s .\n", phonenum);
                 break;
             case MsgResponse::RS_INFO_NOT_SET: //has not name or id
@@ -63,7 +63,7 @@ public:
 
 private:
     // 注意，这个不要忘
-    std::unique_ptr<msgSearchClient::Stub> stub_;
+    std::unique_ptr<MsgService::Stub> stub_;
 };
 
 int main()
