@@ -50,8 +50,8 @@ public:
                 keypair = response.key_pair();
                 unsigned char vk[32] = {0};
                 unsigned char pk[64] = {0};
-                memcpy(pk, keypair.public_key(), keypair.public_key().size());
-                memcpy(vk, keypair.private_key(), keypair.private_key().size());
+                memcpy(pk, keypair.public_key().data(), keypair.public_key().size());
+                memcpy(vk, keypair.private_key().data(), keypair.private_key().size());
                 printf("vk::");
                 for (i = 0; i < keypair.private_key().size(); i++)
                 {
@@ -85,10 +85,16 @@ int main(int argc, char **argv)
 {
 
     keygenerateClient cli(grpc::CreateChannel("localhost:50051", grpc::InsecureChannelCredentials()));
-
+	
+	std::string keytype = "SM4";
+	int keylen = 16;
+	std::string curve = "SYM";
     //sm4
-    cli.genkey("SM4",16,"SYM");
-    cli.genkey("SM2",256,"EC");
+    cli.genkey(keytype,keylen,curve);
+	keytype = "SM2";
+	keylen = 256;
+	curve = "EC";
+    cli.genkey(keytype,keylen,curve);
 
     return 0;
 }
