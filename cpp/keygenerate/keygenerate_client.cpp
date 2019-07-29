@@ -31,7 +31,9 @@ public:
         Status status = stub_->Generate(&context, request, &response);
         if (status.ok())
         {
-            if (response.has_secret_key())
+
+            KeyCase key_s = response.key_case();
+            if (key_s == kSecretKey)
             {
                 unsigned char key[32] = {0};
                 memcpy(key, response.secret_key().data(), response.secret_key().size());
@@ -43,7 +45,7 @@ public:
                 }
                 printf("\n");
             }
-            else if (response.has_key_pair())
+            else if (key_s == kKeyPair)
             {
 
                 KeyGenerateResponse_KeyPair keypair;
