@@ -31,7 +31,7 @@ public:
         Status status = stub_->Generate(&context, request, &response);
         if (status.ok())
         {
-
+            /* 
             KeyCase key_s = response.key_case();
             if (key_s == kSecretKey)
             {
@@ -45,7 +45,8 @@ public:
                 }
                 printf("\n");
             }
-            else if (key_s == kKeyPair)
+            else */
+            if (response.has_key_pair())
             {
 
                 KeyGenerateResponse_KeyPair keypair;
