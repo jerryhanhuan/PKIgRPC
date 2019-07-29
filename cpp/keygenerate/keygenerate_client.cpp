@@ -31,7 +31,7 @@ public:
         Status status = stub_->Generate(&context, request, &response);
         if (status.ok())
         {
-            KeyGenerateResponse::KeyCase case_key = response.key_case()
+            KeyGenerateResponse::KeyCase case_key = response.key_case();
             if (case_key == KeyGenerateResponse::kKeyPair)
             {
 
