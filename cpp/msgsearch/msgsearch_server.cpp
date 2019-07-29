@@ -33,7 +33,7 @@ class MsgServiceImpl final : public MsgService::Service
             printf("id::%s .\n", id);
             response -> set_phonenumber(phonenumber);
             break;
-        case MsgRequest::RS_INFO_NOT_SET: //has not name or id
+        case MsgRequest::RQ_INFO_NOT_SET: //has not name or id
             printf("not has any name or id .\n");
             break;
         }
