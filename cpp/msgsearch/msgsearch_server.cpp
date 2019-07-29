@@ -29,7 +29,7 @@ class MsgServiceImpl final : public MsgService::Service
             response -> set_address(address);
             break;
         case MsgRequest::kId: //has_id
-            memcpy(id, request->id().data(), request->name().size());
+            memcpy(id, request->id().data(), request->id().size());
             printf("id::%s .\n", id);
             response -> set_phonenumber(phonenumber);
             break;
