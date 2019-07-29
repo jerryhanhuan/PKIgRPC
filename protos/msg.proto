@@ -8,7 +8,7 @@ message MsgRequest{
 }
 
 message MsgResponse{
-    one_of rs_info{
+    oneof rs_info{
         string address = 1;
         string phonenumber = 2;
     }
