@@ -21,45 +21,27 @@ class DigestServiceImpl final : public DigestService::Service
 {
     Status Digest(ServerContext *context, ServerReader<::DigestRequest> *reader, ::DigestResponse *response) override
     {
-        DigestRequest request;
+
         char digest_alg[32] = {0};
         unsigned char data[8192] = {0};
         int count = 0;
-
-        // 第一种方法，接收所有客户端数据后，再处理数据
-        /* 
-        while (reader->Read(&request)); // read client stream
-        for (auto &msg : request.messages())
+        DigestRequest request;
+        //std::lock_guard<std::mutex> guard(mtx_);
+        while (reader->Read(&request))
         {
+            cout << "read message size is::"<<request.messages_size() <<endl;
             if (count == 0)
             {
                 strncpy(digest_alg, request.transformation().data(), request.transformation().size());
                 cout << "digest_alg:" << digest_alg << endl;
             }
-            memset(data, 0, sizeof(data));
-            cout << "size:" << msg.size() << "  msg:" << msg.data() << endl;
-            memcpy(data, msg.data(), msg.size());
-            count++;
-        }
-        */
-
-        // 第二种方法，接收数据的同时处理数据
-        std::vector<DigestRequest> Request_list;
-        while (reader->Read(&request))
-        {
-            for (auto &msg : Request_list)
+            //::google::protobuf::RepeatedPtrField<::std::string> list_of_msgs = request.messages();
+            for (auto &msg : request.messages())
             {
-                if (count == 0)
-                {
-                    strncpy(digest_alg, msg.transformation().data(), msg.transformation().size());
-                    cout << "digest_alg:" << digest_alg << endl;
-                }
                 memset(data, 0, sizeof(data));
-                cout <<"msg count:" << msg.messages_size()<< endl;
-                cout << "msg::"<<msg.messages(0)<<endl;
+                cout << "msg::" << msg << endl;
                 count++;
             }
-            Request_list.push_back(request);
         }
 
         unsigned char digest[32] = {0x12, 0x34, 0x00, 0x56, 0x78, 0xAB, 0xCD, 0xEF, 0xEF, 0xCD, 0xAB, 0x78, 0x56, 0x00, 0x34, 0x12};

@@ -29,15 +29,16 @@ class DigestClient
         // clietn context 用来向服务器传递额外的信息，并调整某些 RPC 行为
         ClientContext context;
         DigestResponse response;
-        DigestRequest request;
+       
         char digest_alg[32] = {0};
         strcpy(digest_alg,"SHA1");
         std::unique_ptr<ClientWriter<DigestRequest>> cli_writer(
             stub_->Digest(&context, &response));
         int i = 0;
-        char cmsg[3][256] = {"1111", "2222", "3333"};
-        for (i = 0; i < 3; i++)
+        char cmsg[10][256] = {"0000","1111", "2222", "3333","4444","5555","6666","7777","8888","9999"};
+        for (i = 0; i < 10; i++)
         {
+             DigestRequest request;
             request.set_transformation(digest_alg);
             request.add_messages(cmsg[i]);
             if (!cli_writer->Write(request))
