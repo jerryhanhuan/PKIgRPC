@@ -51,12 +51,11 @@ class DigestServiceImpl final : public DigestService::Service
             {
                 if (count == 0)
                 {
-                    strncpy(digest_alg, request.transformation().data(), request.transformation().size());
+                    strncpy(digest_alg, msg.transformation().data(), msg.transformation().size());
                     cout << "digest_alg:" << digest_alg << endl;
                 }
                 memset(data, 0, sizeof(data));
-                cout <<"  msg:" << msg.data() << endl;
-                memcpy(data, msg.data(), msg.size());
+                cout <<"msg count:" << msg.messages_size()<< endl;
                 count++;
             }
             Request_list.push_back(request);
