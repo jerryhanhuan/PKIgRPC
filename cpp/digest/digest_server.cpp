@@ -44,9 +44,9 @@ class DigestServiceImpl final : public DigestService::Service
         */
 
         // 第二种方法，接收数据的同时处理数据
+        std::vector<DigestRequest> Request_list;
         while (reader->Read(&request))
         {
-            std::vector<DigestRequest> Request_list;
             for (auto &msg : Request_list)
             {
                 if (count == 0)
