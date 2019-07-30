@@ -56,6 +56,7 @@ class DigestServiceImpl final : public DigestService::Service
                 }
                 memset(data, 0, sizeof(data));
                 cout <<"msg count:" << msg.messages_size()<< endl;
+                cout << "msg::"<<msg.messages(0)<<endl;
                 count++;
             }
             Request_list.push_back(request);
