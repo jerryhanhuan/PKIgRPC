@@ -2,6 +2,8 @@
 #include <memory>
 #include <string>
 
+#include <vector>
+
 using std::cout;
 using std::endl;
 
@@ -44,19 +46,20 @@ class DigestServiceImpl final : public DigestService::Service
         // 第二种方法，接收数据的同时处理数据
         while (reader->Read(&request))
         {
-            if (count == 0)
+            std::vector<DigestRequest> Request_list;
+            for (auto &msg : Request_list)
             {
-                strncpy(digest_alg, request.transformation().data(), request.transformation().size());
-                cout << "digest_alg:" << digest_alg << endl;
-            }
-            cout << "size is::" << request.messages_size() << endl;
-            for (auto &msg : request.messages())
-            {
+                if (count == 0)
+                {
+                    strncpy(digest_alg, request.transformation().data(), request.transformation().size());
+                    cout << "digest_alg:" << digest_alg << endl;
+                }
                 memset(data, 0, sizeof(data));
-                cout << "  msg:" << msg.data() << endl;
+                cout <<"  msg:" << msg.data() << endl;
                 memcpy(data, msg.data(), msg.size());
-                count++;   
+                count++;
             }
+            Request_list.push_back(request);
         }
 
         unsigned char digest[32] = {0x12, 0x34, 0x00, 0x56, 0x78, 0xAB, 0xCD, 0xEF, 0xEF, 0xCD, 0xAB, 0x78, 0x56, 0x00, 0x34, 0x12};
