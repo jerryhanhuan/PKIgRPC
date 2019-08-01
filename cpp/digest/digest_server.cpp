@@ -36,16 +36,14 @@ class DigestServiceImpl final : public DigestService::Service
                 cout << "digest_alg:" << digest_alg << endl;
             }
             //::google::protobuf::RepeatedPtrField<::std::string> list_of_msgs = request.messages();
-            //for (auto &msg : request.messages())
-            for(std::string msg: request.messages())
+            for (auto &msg : request.messages()) 
             {
                 memset(data, 0, sizeof(data));
-                memcpy(data, msg.data(),msg.data().size);
+                memcpy(data, msg.data(),msg.size());
                 cout << "msg::" << msg << endl;
                 count++;
             }
         }
-
         unsigned char digest[32] = {0x12, 0x34, 0x00, 0x56, 0x78, 0xAB, 0xCD, 0xEF, 0xEF, 0xCD, 0xAB, 0x78, 0x56, 0x00, 0x34, 0x12};
         response->set_digest(digest, 16);
         return Status::OK;
