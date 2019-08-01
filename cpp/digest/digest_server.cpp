@@ -36,9 +36,11 @@ class DigestServiceImpl final : public DigestService::Service
                 cout << "digest_alg:" << digest_alg << endl;
             }
             //::google::protobuf::RepeatedPtrField<::std::string> list_of_msgs = request.messages();
-            for (auto &msg : request.messages())
+            //for (auto &msg : request.messages())
+            for(std::string msg: request.messages())
             {
                 memset(data, 0, sizeof(data));
+                memcpy(data, msg.data(),msg.data().size);
                 cout << "msg::" << msg << endl;
                 count++;
             }
