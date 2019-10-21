@@ -37,7 +37,7 @@ public:
             request.set_pseudo_random_function(hash);
         }
         // iteration
-        request.set_iterations(iterations);
+        //request.set_iterations(iterations);
 
         const int len = 8;
         int rlen = 0;

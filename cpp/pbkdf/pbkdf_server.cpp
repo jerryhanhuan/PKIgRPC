@@ -35,7 +35,7 @@ class PBKDFServiceImpl final : public PBKDFService::Service
 
         printf("in PBKDFServiceImpl::Pbkdf::pbkdf_password[%s] .\n", pbkdf_password.data());
         printf("in PBKDFServiceImpl::Pbkdf::keysize[%d] .\n", keysize);
-        printf("in PBKDFServiceImpl::Pbkdf::hash[%s] .\n", hash);
+        printf("in PBKDFServiceImpl::Pbkdf::hash[%s] .\n", hash.data());
         printf("in PBKDFServiceImpl::Pbkdf::iterations[%d] .\n", iterations);
 
         for(auto msg:request->salts())
