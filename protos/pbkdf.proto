@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+
+service PBKDFService {
+    rpc Pbkdf (PBKDFRequest) returns (PBKDFResponse) {}
+}
+
+// password 参与密钥协商的密码
+//
+// key_size 协商出的对称密钥长度
+//
+// pseudo_random_function 指定一个 Digest 或 HMAC 算法作为伪随机数生成函数
+//      * 可选参数，默认为 HMAC-SHA1
+//      * 支持的算法：HMAC-SHA1, HMAC-SHA256, HMAC-SHA512
+//
+// salts 参与密钥协商的盐值
+//
+// iterations 迭代次数，可选参数，默认为 10000 次
+
+message PBKDFRequest {
+    bytes password = 1;
+    int32 key_size = 2;
+    string pseudo_random_function = 3;
+    repeated bytes salts = 4;
+    int32 iterations = 5;
+}
+
+// secret_key 基于 口令离散的密钥
+message PBKDFResponse {
+    bytes secret_key = 1;
+}

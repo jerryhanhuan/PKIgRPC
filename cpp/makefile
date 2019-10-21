@@ -38,6 +38,12 @@ all:
 	protoc -I ../protos --grpc_out=msgsearch --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` ../protos/msg.proto
 	make -C msgsearch
 
+
+	# pbkdf
+	protoc -I ../protos --cpp_out=pbkdf  ../protos/pbkdf.proto
+	protoc -I ../protos --grpc_out=pbkdf --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` ../protos/pbkdf.proto
+	make -C pbkdf
+
 .PHONY:clean
 
 clean:
@@ -48,3 +54,4 @@ clean:
 	make clean -C stream
 	make clean -C keygenerate
 	make clean -C msgsearch
+	make clean -C pbkdf
