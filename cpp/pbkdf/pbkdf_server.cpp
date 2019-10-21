@@ -27,7 +27,6 @@ class PBKDFServiceImpl final : public PBKDFService::Service
         std::string hash = "HMAC-SHA1"; //默认是 HMAC-SHA1
         int iterations = 10000;
         int ret = 0;
-        std::string key = "";
 
         pbkdf_password = request->password();
         keysize = request->key_size();

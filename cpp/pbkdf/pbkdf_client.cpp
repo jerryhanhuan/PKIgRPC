@@ -48,12 +48,12 @@ public:
             left = saltlen - rlen;
             if (left >= len)
             {
-                request.add_messages(salts + rlen, len);
+                request.add_salts(salts + rlen, len);
                 rlen += len;
             }
             else
             {
-                request.add_messages(salts + rlen, left);
+                request.add_salts(salts + rlen, left);
                 rlen += left;
             }
         }
@@ -85,9 +85,9 @@ int main(int argc, char **argv)
     PBKDFClient cli(grpc::CreateChannel("localhost:50051", grpc::InsecureChannelCredentials()));
     std::string password = "123456";
     int keysize = 16;
-    unsigned char *salts = "0123456789ABCDEFFEDCBA987654321000000000000000000000000000000000FEDCBA98765432100123456789ABCDEF";
+    const char *salts = "0123456789ABCDEFFEDCBA987654321000000000000000000000000000000000FEDCBA98765432100123456789ABCDEF";
     unsigned char key[1024] = {0};
-    if (cli.pbkdf(password, 16, "", salts, strlen((char *)salts), 100, key) < 0)
+    if (cli.pbkdf(password, 16, "", (unsigned char*)salts, strlen((char *)salts), 100, key) < 0)
     {
         std::cout << "Random failed !" << endl;
     }
