@@ -36,8 +36,7 @@ class Greeter final {
   class StubInterface {
    public:
     virtual ~StubInterface() {}
-    //
-    // 以下 分别是 服务端 推送流， 客户端 推送流 ，双向流。
+    // 通过在响应类型前插入 stream 关键字，可以指定一个服务端的流方法
     std::unique_ptr< ::grpc::ClientReaderInterface< ::StreamResData>> GetStream(::grpc::ClientContext* context, const ::StreamReqData& request) {
       return std::unique_ptr< ::grpc::ClientReaderInterface< ::StreamResData>>(GetStreamRaw(context, request));
     }
@@ -47,6 +46,7 @@ class Greeter final {
     std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::StreamResData>> PrepareAsyncGetStream(::grpc::ClientContext* context, const ::StreamReqData& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::StreamResData>>(PrepareAsyncGetStreamRaw(context, request, cq));
     }
+    // 通过在请求类型前插入 stream 关键字，可以指定一个客户端的流方法
     std::unique_ptr< ::grpc::ClientWriterInterface< ::StreamReqData>> PutStream(::grpc::ClientContext* context, ::StreamResData* response) {
       return std::unique_ptr< ::grpc::ClientWriterInterface< ::StreamReqData>>(PutStreamRaw(context, response));
     }
@@ -68,9 +68,9 @@ class Greeter final {
     class experimental_async_interface {
      public:
       virtual ~experimental_async_interface() {}
-      //
-      // 以下 分别是 服务端 推送流， 客户端 推送流 ，双向流。
+      // 通过在响应类型前插入 stream 关键字，可以指定一个服务端的流方法
       virtual void GetStream(::grpc::ClientContext* context, ::StreamReqData* request, ::grpc::experimental::ClientReadReactor< ::StreamResData>* reactor) = 0;
+      // 通过在请求类型前插入 stream 关键字，可以指定一个客户端的流方法
       virtual void PutStream(::grpc::ClientContext* context, ::StreamResData* response, ::grpc::experimental::ClientWriteReactor< ::StreamReqData>* reactor) = 0;
       virtual void AllStream(::grpc::ClientContext* context, ::grpc::experimental::ClientBidiReactor< ::StreamReqData,::StreamResData>* reactor) = 0;
     };
@@ -152,9 +152,9 @@ class Greeter final {
    public:
     Service();
     virtual ~Service();
-    //
-    // 以下 分别是 服务端 推送流， 客户端 推送流 ，双向流。
+    // 通过在响应类型前插入 stream 关键字，可以指定一个服务端的流方法
     virtual ::grpc::Status GetStream(::grpc::ServerContext* context, const ::StreamReqData* request, ::grpc::ServerWriter< ::StreamResData>* writer);
+    // 通过在请求类型前插入 stream 关键字，可以指定一个客户端的流方法
     virtual ::grpc::Status PutStream(::grpc::ServerContext* context, ::grpc::ServerReader< ::StreamReqData>* reader, ::StreamResData* response);
     virtual ::grpc::Status AllStream(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::StreamResData, ::StreamReqData>* stream);
   };
@@ -487,6 +487,8 @@ class Greeter final {
   typedef WithSplitStreamingMethod_GetStream<Service > SplitStreamedService;
   typedef WithSplitStreamingMethod_GetStream<Service > StreamedService;
 };
+//
+// 以下 分别是 服务端 推送流， 客户端 推送流 ，双向流。
 
 
 #endif  // GRPC_stream_2eproto__INCLUDED

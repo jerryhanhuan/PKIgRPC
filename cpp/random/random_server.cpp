@@ -34,7 +34,7 @@ void RunServer()
     RandomServiceImpl service;
 
     ServerBuilder builder;
-    builder.SetOption(std::unique_ptr<grpc::ServerBuilderOption>(new NoReusePortOption));
+    //builder.SetOption(std::unique_ptr<grpc::ServerBuilderOption>(new NoReusePortOption));
      // Listen on the given address without any authentication mechanism.
     builder.AddListeningPort(server_address, grpc::InsecureServerCredentials());
 
