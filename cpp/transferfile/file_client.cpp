@@ -6,6 +6,7 @@
 #include <sys/time.h>
 #include <string.h>
 
+#include <grpcpp/grpcpp.h>
 #include "transferfile.grpc.pb.h"
 
 using grpc::Channel;
@@ -22,7 +23,7 @@ class TransferFileClient
 
 public:
     TransferFileClient(std::shared_ptr<Channel> channel) : stub_(TransferFile::NewStub(channel)){};
-    long Upload(string filename);
+    long Upload(const char* filename);
 
 private:
     // 注意，这个不要忘
@@ -58,7 +59,7 @@ long TransferFileClient::Upload(const char *filename)
         len += infile.gcount();
     }
     //WritesDone() 通知gRPC 我们已经完成输入
-    writer.WritesDone();
+    writer->WritesDone();
     Status status = writer->Finish();
     if (status.ok())
     {
@@ -70,6 +71,7 @@ long TransferFileClient::Upload(const char *filename)
     {
         std::cout << "TransferFile rpc failed." << std::endl;
     }
+	return 0;
 }
 
 
@@ -89,10 +91,10 @@ int main(int argc, char **argv)
     cin >> filename;
 
     char address[256]={0};
-    sprintf(address, "%s:%d", ip, port);
+    sprintf(address, "%s:%d", ip.c_str(), port);
 
 
-    TransferFileClient guide(grpc::CreateChannel(address, grpc::InsecureChannelCredentials()));
+    TransferFileClient cli(grpc::CreateChannel(address, grpc::InsecureChannelCredentials()));
     cli.Upload(filename.c_str());
 
     return 0;
