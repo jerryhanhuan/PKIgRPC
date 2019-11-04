@@ -45,8 +45,8 @@ all:
 	make -C pbkdf
 
 	# transferfile
-	protoc -I ../protos --cpp_out=transferfile ../protos/transfer.proto
-	protoc -I ../protos --grpc_out=transferfile --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` ../protos/transfer.proto
+	protoc -I ../protos --cpp_out=transferfile ../protos/transferfile.proto
+	protoc -I ../protos --grpc_out=transferfile --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` ../protos/transferfile.proto
 	make -C transferfile
 
 
