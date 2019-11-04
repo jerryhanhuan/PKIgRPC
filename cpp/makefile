@@ -61,3 +61,4 @@ clean:
 	make clean -C keygenerate
 	make clean -C msgsearch
 	make clean -C pbkdf
+	make clean -C transferfile
