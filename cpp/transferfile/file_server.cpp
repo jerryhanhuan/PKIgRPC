@@ -43,7 +43,7 @@ Status TransferFileImpl::Upload(ServerContext* context, ServerReader<Chunk>* rea
     outfile.open(des_file_name,std::ofstream::out | std::ofstream::trunc | std::ofstream::binary);
     while(reader->Read(&chunk)){
         data = chunk.buffer();
-        outfile.write(data,data.length());
+        outfile.write(data.data(),data.length());
     }
     //tellp 用于返回写入位置
     //tellg 则用于返回读取位置
