@@ -44,6 +44,12 @@ all:
 	protoc -I ../protos --grpc_out=pbkdf --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` ../protos/pbkdf.proto
 	make -C pbkdf
 
+	# transferfile
+	protoc -I ../protos --cpp_out=transferfile ../protos/transfer.proto
+	protoc -I ../protos --grpc_out=transferfile --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` ../protos/transfer.proto
+	make -C transferfile
+
+
 .PHONY:clean
 
 clean:
