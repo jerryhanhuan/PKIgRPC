@@ -12,15 +12,13 @@ using grpc::Server;
 using grpc::ServerBuilder;
 using grpc::ServerContext;
 using grpc::ServerReader;
-using grpc::ServerReaderWriter;
-using grpc::ServerWriter;
 using grpc::Status;
 
 
 using std::cout;
 using std::endl;
 
-#define CHUNK_SIZE 1024 * 1024
+
 
 class TransferFileImpl  final:public TransferFile::Service{
     Status Upload(ServerContext* context, ServerReader<Chunk>* reader,Reply* response) override;
