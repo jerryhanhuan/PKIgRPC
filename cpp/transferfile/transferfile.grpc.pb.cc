@@ -16,10 +16,9 @@
 #include <grpcpp/impl/codegen/server_callback.h>
 #include <grpcpp/impl/codegen/service_type.h>
 #include <grpcpp/impl/codegen/sync_stream.h>
-namespace transferfile {
 
 static const char* TransferFile_method_names[] = {
-  "/transferfile.TransferFile/Upload",
+  "/TransferFile/Upload",
 };
 
 std::unique_ptr< TransferFile::Stub> TransferFile::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -32,40 +31,38 @@ TransferFile::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& chann
   : channel_(channel), rpcmethod_Upload_(TransferFile_method_names[0], ::grpc::internal::RpcMethod::CLIENT_STREAMING, channel)
   {}
 
-::grpc::ClientWriter< ::transferfile::Chunk>* TransferFile::Stub::UploadRaw(::grpc::ClientContext* context, ::transferfile::Reply* response) {
-  return ::grpc::internal::ClientWriterFactory< ::transferfile::Chunk>::Create(channel_.get(), rpcmethod_Upload_, context, response);
+::grpc::ClientWriter< ::Chunk>* TransferFile::Stub::UploadRaw(::grpc::ClientContext* context, ::Reply* response) {
+  return ::grpc::internal::ClientWriterFactory< ::Chunk>::Create(channel_.get(), rpcmethod_Upload_, context, response);
 }
 
-void TransferFile::Stub::experimental_async::Upload(::grpc::ClientContext* context, ::transferfile::Reply* response, ::grpc::experimental::ClientWriteReactor< ::transferfile::Chunk>* reactor) {
-  ::grpc::internal::ClientCallbackWriterFactory< ::transferfile::Chunk>::Create(stub_->channel_.get(), stub_->rpcmethod_Upload_, context, response, reactor);
+void TransferFile::Stub::experimental_async::Upload(::grpc::ClientContext* context, ::Reply* response, ::grpc::experimental::ClientWriteReactor< ::Chunk>* reactor) {
+  ::grpc::internal::ClientCallbackWriterFactory< ::Chunk>::Create(stub_->channel_.get(), stub_->rpcmethod_Upload_, context, response, reactor);
 }
 
-::grpc::ClientAsyncWriter< ::transferfile::Chunk>* TransferFile::Stub::AsyncUploadRaw(::grpc::ClientContext* context, ::transferfile::Reply* response, ::grpc::CompletionQueue* cq, void* tag) {
-  return ::grpc::internal::ClientAsyncWriterFactory< ::transferfile::Chunk>::Create(channel_.get(), cq, rpcmethod_Upload_, context, response, true, tag);
+::grpc::ClientAsyncWriter< ::Chunk>* TransferFile::Stub::AsyncUploadRaw(::grpc::ClientContext* context, ::Reply* response, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncWriterFactory< ::Chunk>::Create(channel_.get(), cq, rpcmethod_Upload_, context, response, true, tag);
 }
 
-::grpc::ClientAsyncWriter< ::transferfile::Chunk>* TransferFile::Stub::PrepareAsyncUploadRaw(::grpc::ClientContext* context, ::transferfile::Reply* response, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncWriterFactory< ::transferfile::Chunk>::Create(channel_.get(), cq, rpcmethod_Upload_, context, response, false, nullptr);
+::grpc::ClientAsyncWriter< ::Chunk>* TransferFile::Stub::PrepareAsyncUploadRaw(::grpc::ClientContext* context, ::Reply* response, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncWriterFactory< ::Chunk>::Create(channel_.get(), cq, rpcmethod_Upload_, context, response, false, nullptr);
 }
 
 TransferFile::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       TransferFile_method_names[0],
       ::grpc::internal::RpcMethod::CLIENT_STREAMING,
-      new ::grpc::internal::ClientStreamingHandler< TransferFile::Service, ::transferfile::Chunk, ::transferfile::Reply>(
+      new ::grpc::internal::ClientStreamingHandler< TransferFile::Service, ::Chunk, ::Reply>(
           std::mem_fn(&TransferFile::Service::Upload), this)));
 }
 
 TransferFile::Service::~Service() {
 }
 
-::grpc::Status TransferFile::Service::Upload(::grpc::ServerContext* context, ::grpc::ServerReader< ::transferfile::Chunk>* reader, ::transferfile::Reply* response) {
+::grpc::Status TransferFile::Service::Upload(::grpc::ServerContext* context, ::grpc::ServerReader< ::Chunk>* reader, ::Reply* response) {
   (void) context;
   (void) reader;
   (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-
-}  // namespace transferfile
 

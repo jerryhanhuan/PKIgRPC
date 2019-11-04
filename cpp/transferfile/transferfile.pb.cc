@@ -16,7 +16,6 @@
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 
-namespace transferfile {
 class ChunkDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<Chunk> _instance;
@@ -25,16 +24,15 @@ class ReplyDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<Reply> _instance;
 } _Reply_default_instance_;
-}  // namespace transferfile
 static void InitDefaultsChunk_transferfile_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::transferfile::_Chunk_default_instance_;
-    new (ptr) ::transferfile::Chunk();
+    void* ptr = &::_Chunk_default_instance_;
+    new (ptr) ::Chunk();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::transferfile::Chunk::InitAsDefaultInstance();
+  ::Chunk::InitAsDefaultInstance();
 }
 
 ::google::protobuf::internal::SCCInfo<0> scc_info_Chunk_transferfile_2eproto =
@@ -44,11 +42,11 @@ static void InitDefaultsReply_transferfile_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::transferfile::_Reply_default_instance_;
-    new (ptr) ::transferfile::Reply();
+    void* ptr = &::_Reply_default_instance_;
+    new (ptr) ::Reply();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::transferfile::Reply::InitAsDefaultInstance();
+  ::Reply::InitAsDefaultInstance();
 }
 
 ::google::protobuf::internal::SCCInfo<0> scc_info_Reply_transferfile_2eproto =
@@ -65,26 +63,26 @@ constexpr ::google::protobuf::ServiceDescriptor const** file_level_service_descr
 
 const ::google::protobuf::uint32 TableStruct_transferfile_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::transferfile::Chunk, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::Chunk, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::transferfile::Chunk, buffer_),
+  PROTOBUF_FIELD_OFFSET(::Chunk, buffer_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::transferfile::Reply, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::Reply, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::transferfile::Reply, length_),
+  PROTOBUF_FIELD_OFFSET(::Reply, length_),
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, sizeof(::transferfile::Chunk)},
-  { 6, -1, sizeof(::transferfile::Reply)},
+  { 0, -1, sizeof(::Chunk)},
+  { 6, -1, sizeof(::Reply)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::google::protobuf::Message*>(&::transferfile::_Chunk_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::transferfile::_Reply_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::_Chunk_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::_Reply_default_instance_),
 };
 
 ::google::protobuf::internal::AssignDescriptorsTable assign_descriptors_table_transferfile_2eproto = {
@@ -94,16 +92,15 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
 };
 
 const char descriptor_table_protodef_transferfile_2eproto[] =
-  "\n\022transferfile.proto\022\014transferfile\"\027\n\005Ch"
-  "unk\022\016\n\006buffer\030\001 \001(\014\"\027\n\005Reply\022\016\n\006length\030\001"
-  " \001(\0052F\n\014TransferFile\0226\n\006Upload\022\023.transfe"
-  "rfile.Chunk\032\023.transferfile.Reply\"\000(\001b\006pr"
+  "\n\022transferfile.proto\"\027\n\005Chunk\022\016\n\006buffer\030"
+  "\001 \001(\014\"\027\n\005Reply\022\016\n\006length\030\001 \001(\0052,\n\014Transf"
+  "erFile\022\034\n\006Upload\022\006.Chunk\032\006.Reply\"\000(\001b\006pr"
   "oto3"
   ;
 ::google::protobuf::internal::DescriptorTable descriptor_table_transferfile_2eproto = {
   false, InitDefaults_transferfile_2eproto, 
   descriptor_table_protodef_transferfile_2eproto,
-  "transferfile.proto", &assign_descriptors_table_transferfile_2eproto, 164,
+  "transferfile.proto", &assign_descriptors_table_transferfile_2eproto, 124,
 };
 
 void AddDescriptors_transferfile_2eproto() {
@@ -115,7 +112,6 @@ void AddDescriptors_transferfile_2eproto() {
 
 // Force running AddDescriptors() at dynamic initialization time.
 static bool dynamic_init_dummy_transferfile_2eproto = []() { AddDescriptors_transferfile_2eproto(); return true; }();
-namespace transferfile {
 
 // ===================================================================
 
@@ -132,7 +128,7 @@ const int Chunk::kBufferFieldNumber;
 Chunk::Chunk()
   : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:transferfile.Chunk)
+  // @@protoc_insertion_point(constructor:Chunk)
 }
 Chunk::Chunk(const Chunk& from)
   : ::google::protobuf::Message(),
@@ -142,7 +138,7 @@ Chunk::Chunk(const Chunk& from)
   if (from.buffer().size() > 0) {
     buffer_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.buffer_);
   }
-  // @@protoc_insertion_point(copy_constructor:transferfile.Chunk)
+  // @@protoc_insertion_point(copy_constructor:Chunk)
 }
 
 void Chunk::SharedCtor() {
@@ -152,7 +148,7 @@ void Chunk::SharedCtor() {
 }
 
 Chunk::~Chunk() {
-  // @@protoc_insertion_point(destructor:transferfile.Chunk)
+  // @@protoc_insertion_point(destructor:Chunk)
   SharedDtor();
 }
 
@@ -170,7 +166,7 @@ const Chunk& Chunk::default_instance() {
 
 
 void Chunk::Clear() {
-// @@protoc_insertion_point(message_clear_start:transferfile.Chunk)
+// @@protoc_insertion_point(message_clear_start:Chunk)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -235,7 +231,7 @@ bool Chunk::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:transferfile.Chunk)
+  // @@protoc_insertion_point(parse_start:Chunk)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
@@ -264,10 +260,10 @@ bool Chunk::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:transferfile.Chunk)
+  // @@protoc_insertion_point(parse_success:Chunk)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:transferfile.Chunk)
+  // @@protoc_insertion_point(parse_failure:Chunk)
   return false;
 #undef DO_
 }
@@ -275,7 +271,7 @@ failure:
 
 void Chunk::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:transferfile.Chunk)
+  // @@protoc_insertion_point(serialize_start:Chunk)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -289,12 +285,12 @@ void Chunk::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         _internal_metadata_.unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:transferfile.Chunk)
+  // @@protoc_insertion_point(serialize_end:Chunk)
 }
 
 ::google::protobuf::uint8* Chunk::InternalSerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:transferfile.Chunk)
+  // @@protoc_insertion_point(serialize_to_array_start:Chunk)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -309,12 +305,12 @@ void Chunk::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:transferfile.Chunk)
+  // @@protoc_insertion_point(serialize_to_array_end:Chunk)
   return target;
 }
 
 size_t Chunk::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:transferfile.Chunk)
+// @@protoc_insertion_point(message_byte_size_start:Chunk)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -339,22 +335,22 @@ size_t Chunk::ByteSizeLong() const {
 }
 
 void Chunk::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:transferfile.Chunk)
+// @@protoc_insertion_point(generalized_merge_from_start:Chunk)
   GOOGLE_DCHECK_NE(&from, this);
   const Chunk* source =
       ::google::protobuf::DynamicCastToGenerated<Chunk>(
           &from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:transferfile.Chunk)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Chunk)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:transferfile.Chunk)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:Chunk)
     MergeFrom(*source);
   }
 }
 
 void Chunk::MergeFrom(const Chunk& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:transferfile.Chunk)
+// @@protoc_insertion_point(class_specific_merge_from_start:Chunk)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
@@ -367,14 +363,14 @@ void Chunk::MergeFrom(const Chunk& from) {
 }
 
 void Chunk::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:transferfile.Chunk)
+// @@protoc_insertion_point(generalized_copy_from_start:Chunk)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 void Chunk::CopyFrom(const Chunk& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:transferfile.Chunk)
+// @@protoc_insertion_point(class_specific_copy_from_start:Chunk)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -416,14 +412,14 @@ const int Reply::kLengthFieldNumber;
 Reply::Reply()
   : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:transferfile.Reply)
+  // @@protoc_insertion_point(constructor:Reply)
 }
 Reply::Reply(const Reply& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   length_ = from.length_;
-  // @@protoc_insertion_point(copy_constructor:transferfile.Reply)
+  // @@protoc_insertion_point(copy_constructor:Reply)
 }
 
 void Reply::SharedCtor() {
@@ -431,7 +427,7 @@ void Reply::SharedCtor() {
 }
 
 Reply::~Reply() {
-  // @@protoc_insertion_point(destructor:transferfile.Reply)
+  // @@protoc_insertion_point(destructor:Reply)
   SharedDtor();
 }
 
@@ -448,7 +444,7 @@ const Reply& Reply::default_instance() {
 
 
 void Reply::Clear() {
-// @@protoc_insertion_point(message_clear_start:transferfile.Reply)
+// @@protoc_insertion_point(message_clear_start:Reply)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -498,7 +494,7 @@ bool Reply::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:transferfile.Reply)
+  // @@protoc_insertion_point(parse_start:Reply)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
@@ -529,10 +525,10 @@ bool Reply::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:transferfile.Reply)
+  // @@protoc_insertion_point(parse_success:Reply)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:transferfile.Reply)
+  // @@protoc_insertion_point(parse_failure:Reply)
   return false;
 #undef DO_
 }
@@ -540,7 +536,7 @@ failure:
 
 void Reply::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:transferfile.Reply)
+  // @@protoc_insertion_point(serialize_start:Reply)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -553,12 +549,12 @@ void Reply::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         _internal_metadata_.unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:transferfile.Reply)
+  // @@protoc_insertion_point(serialize_end:Reply)
 }
 
 ::google::protobuf::uint8* Reply::InternalSerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:transferfile.Reply)
+  // @@protoc_insertion_point(serialize_to_array_start:Reply)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -571,12 +567,12 @@ void Reply::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:transferfile.Reply)
+  // @@protoc_insertion_point(serialize_to_array_end:Reply)
   return target;
 }
 
 size_t Reply::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:transferfile.Reply)
+// @@protoc_insertion_point(message_byte_size_start:Reply)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -601,22 +597,22 @@ size_t Reply::ByteSizeLong() const {
 }
 
 void Reply::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:transferfile.Reply)
+// @@protoc_insertion_point(generalized_merge_from_start:Reply)
   GOOGLE_DCHECK_NE(&from, this);
   const Reply* source =
       ::google::protobuf::DynamicCastToGenerated<Reply>(
           &from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:transferfile.Reply)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Reply)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:transferfile.Reply)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:Reply)
     MergeFrom(*source);
   }
 }
 
 void Reply::MergeFrom(const Reply& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:transferfile.Reply)
+// @@protoc_insertion_point(class_specific_merge_from_start:Reply)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
@@ -628,14 +624,14 @@ void Reply::MergeFrom(const Reply& from) {
 }
 
 void Reply::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:transferfile.Reply)
+// @@protoc_insertion_point(generalized_copy_from_start:Reply)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 void Reply::CopyFrom(const Reply& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:transferfile.Reply)
+// @@protoc_insertion_point(class_specific_copy_from_start:Reply)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -662,14 +658,13 @@ void Reply::InternalSwap(Reply* other) {
 
 
 // @@protoc_insertion_point(namespace_scope)
-}  // namespace transferfile
 namespace google {
 namespace protobuf {
-template<> PROTOBUF_NOINLINE ::transferfile::Chunk* Arena::CreateMaybeMessage< ::transferfile::Chunk >(Arena* arena) {
-  return Arena::CreateInternal< ::transferfile::Chunk >(arena);
+template<> PROTOBUF_NOINLINE ::Chunk* Arena::CreateMaybeMessage< ::Chunk >(Arena* arena) {
+  return Arena::CreateInternal< ::Chunk >(arena);
 }
-template<> PROTOBUF_NOINLINE ::transferfile::Reply* Arena::CreateMaybeMessage< ::transferfile::Reply >(Arena* arena) {
-  return Arena::CreateInternal< ::transferfile::Reply >(arena);
+template<> PROTOBUF_NOINLINE ::Reply* Arena::CreateMaybeMessage< ::Reply >(Arena* arena) {
+  return Arena::CreateInternal< ::Reply >(arena);
 }
 }  // namespace protobuf
 }  // namespace google

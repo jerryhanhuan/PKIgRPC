@@ -27,52 +27,51 @@ class ServerCompletionQueue;
 class ServerContext;
 }  // namespace grpc
 
-namespace transferfile {
-
+// package transferfile; // package 会导致 生成最外部的命名空间
 class TransferFile final {
  public:
   static constexpr char const* service_full_name() {
-    return "transferfile.TransferFile";
+    return "TransferFile";
   }
   class StubInterface {
    public:
     virtual ~StubInterface() {}
-    std::unique_ptr< ::grpc::ClientWriterInterface< ::transferfile::Chunk>> Upload(::grpc::ClientContext* context, ::transferfile::Reply* response) {
-      return std::unique_ptr< ::grpc::ClientWriterInterface< ::transferfile::Chunk>>(UploadRaw(context, response));
+    std::unique_ptr< ::grpc::ClientWriterInterface< ::Chunk>> Upload(::grpc::ClientContext* context, ::Reply* response) {
+      return std::unique_ptr< ::grpc::ClientWriterInterface< ::Chunk>>(UploadRaw(context, response));
     }
-    std::unique_ptr< ::grpc::ClientAsyncWriterInterface< ::transferfile::Chunk>> AsyncUpload(::grpc::ClientContext* context, ::transferfile::Reply* response, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncWriterInterface< ::transferfile::Chunk>>(AsyncUploadRaw(context, response, cq, tag));
+    std::unique_ptr< ::grpc::ClientAsyncWriterInterface< ::Chunk>> AsyncUpload(::grpc::ClientContext* context, ::Reply* response, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncWriterInterface< ::Chunk>>(AsyncUploadRaw(context, response, cq, tag));
     }
-    std::unique_ptr< ::grpc::ClientAsyncWriterInterface< ::transferfile::Chunk>> PrepareAsyncUpload(::grpc::ClientContext* context, ::transferfile::Reply* response, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncWriterInterface< ::transferfile::Chunk>>(PrepareAsyncUploadRaw(context, response, cq));
+    std::unique_ptr< ::grpc::ClientAsyncWriterInterface< ::Chunk>> PrepareAsyncUpload(::grpc::ClientContext* context, ::Reply* response, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncWriterInterface< ::Chunk>>(PrepareAsyncUploadRaw(context, response, cq));
     }
     class experimental_async_interface {
      public:
       virtual ~experimental_async_interface() {}
-      virtual void Upload(::grpc::ClientContext* context, ::transferfile::Reply* response, ::grpc::experimental::ClientWriteReactor< ::transferfile::Chunk>* reactor) = 0;
+      virtual void Upload(::grpc::ClientContext* context, ::Reply* response, ::grpc::experimental::ClientWriteReactor< ::Chunk>* reactor) = 0;
     };
     virtual class experimental_async_interface* experimental_async() { return nullptr; }
   private:
-    virtual ::grpc::ClientWriterInterface< ::transferfile::Chunk>* UploadRaw(::grpc::ClientContext* context, ::transferfile::Reply* response) = 0;
-    virtual ::grpc::ClientAsyncWriterInterface< ::transferfile::Chunk>* AsyncUploadRaw(::grpc::ClientContext* context, ::transferfile::Reply* response, ::grpc::CompletionQueue* cq, void* tag) = 0;
-    virtual ::grpc::ClientAsyncWriterInterface< ::transferfile::Chunk>* PrepareAsyncUploadRaw(::grpc::ClientContext* context, ::transferfile::Reply* response, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientWriterInterface< ::Chunk>* UploadRaw(::grpc::ClientContext* context, ::Reply* response) = 0;
+    virtual ::grpc::ClientAsyncWriterInterface< ::Chunk>* AsyncUploadRaw(::grpc::ClientContext* context, ::Reply* response, ::grpc::CompletionQueue* cq, void* tag) = 0;
+    virtual ::grpc::ClientAsyncWriterInterface< ::Chunk>* PrepareAsyncUploadRaw(::grpc::ClientContext* context, ::Reply* response, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
     Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel);
-    std::unique_ptr< ::grpc::ClientWriter< ::transferfile::Chunk>> Upload(::grpc::ClientContext* context, ::transferfile::Reply* response) {
-      return std::unique_ptr< ::grpc::ClientWriter< ::transferfile::Chunk>>(UploadRaw(context, response));
+    std::unique_ptr< ::grpc::ClientWriter< ::Chunk>> Upload(::grpc::ClientContext* context, ::Reply* response) {
+      return std::unique_ptr< ::grpc::ClientWriter< ::Chunk>>(UploadRaw(context, response));
     }
-    std::unique_ptr< ::grpc::ClientAsyncWriter< ::transferfile::Chunk>> AsyncUpload(::grpc::ClientContext* context, ::transferfile::Reply* response, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncWriter< ::transferfile::Chunk>>(AsyncUploadRaw(context, response, cq, tag));
+    std::unique_ptr< ::grpc::ClientAsyncWriter< ::Chunk>> AsyncUpload(::grpc::ClientContext* context, ::Reply* response, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncWriter< ::Chunk>>(AsyncUploadRaw(context, response, cq, tag));
     }
-    std::unique_ptr< ::grpc::ClientAsyncWriter< ::transferfile::Chunk>> PrepareAsyncUpload(::grpc::ClientContext* context, ::transferfile::Reply* response, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncWriter< ::transferfile::Chunk>>(PrepareAsyncUploadRaw(context, response, cq));
+    std::unique_ptr< ::grpc::ClientAsyncWriter< ::Chunk>> PrepareAsyncUpload(::grpc::ClientContext* context, ::Reply* response, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncWriter< ::Chunk>>(PrepareAsyncUploadRaw(context, response, cq));
     }
     class experimental_async final :
       public StubInterface::experimental_async_interface {
      public:
-      void Upload(::grpc::ClientContext* context, ::transferfile::Reply* response, ::grpc::experimental::ClientWriteReactor< ::transferfile::Chunk>* reactor) override;
+      void Upload(::grpc::ClientContext* context, ::Reply* response, ::grpc::experimental::ClientWriteReactor< ::Chunk>* reactor) override;
      private:
       friend class Stub;
       explicit experimental_async(Stub* stub): stub_(stub) { }
@@ -84,9 +83,9 @@ class TransferFile final {
    private:
     std::shared_ptr< ::grpc::ChannelInterface> channel_;
     class experimental_async async_stub_{this};
-    ::grpc::ClientWriter< ::transferfile::Chunk>* UploadRaw(::grpc::ClientContext* context, ::transferfile::Reply* response) override;
-    ::grpc::ClientAsyncWriter< ::transferfile::Chunk>* AsyncUploadRaw(::grpc::ClientContext* context, ::transferfile::Reply* response, ::grpc::CompletionQueue* cq, void* tag) override;
-    ::grpc::ClientAsyncWriter< ::transferfile::Chunk>* PrepareAsyncUploadRaw(::grpc::ClientContext* context, ::transferfile::Reply* response, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientWriter< ::Chunk>* UploadRaw(::grpc::ClientContext* context, ::Reply* response) override;
+    ::grpc::ClientAsyncWriter< ::Chunk>* AsyncUploadRaw(::grpc::ClientContext* context, ::Reply* response, ::grpc::CompletionQueue* cq, void* tag) override;
+    ::grpc::ClientAsyncWriter< ::Chunk>* PrepareAsyncUploadRaw(::grpc::ClientContext* context, ::Reply* response, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_Upload_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
@@ -95,7 +94,7 @@ class TransferFile final {
    public:
     Service();
     virtual ~Service();
-    virtual ::grpc::Status Upload(::grpc::ServerContext* context, ::grpc::ServerReader< ::transferfile::Chunk>* reader, ::transferfile::Reply* response);
+    virtual ::grpc::Status Upload(::grpc::ServerContext* context, ::grpc::ServerReader< ::Chunk>* reader, ::Reply* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_Upload : public BaseClass {
@@ -109,11 +108,11 @@ class TransferFile final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Upload(::grpc::ServerContext* context, ::grpc::ServerReader< ::transferfile::Chunk>* reader, ::transferfile::Reply* response) override {
+    ::grpc::Status Upload(::grpc::ServerContext* context, ::grpc::ServerReader< ::Chunk>* reader, ::Reply* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestUpload(::grpc::ServerContext* context, ::grpc::ServerAsyncReader< ::transferfile::Reply, ::transferfile::Chunk>* reader, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestUpload(::grpc::ServerContext* context, ::grpc::ServerAsyncReader< ::Reply, ::Chunk>* reader, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncClientStreaming(0, context, reader, new_call_cq, notification_cq, tag);
     }
   };
@@ -125,20 +124,20 @@ class TransferFile final {
    public:
     ExperimentalWithCallbackMethod_Upload() {
       ::grpc::Service::experimental().MarkMethodCallback(0,
-        new ::grpc::internal::CallbackClientStreamingHandler< ::transferfile::Chunk, ::transferfile::Reply>(
+        new ::grpc::internal::CallbackClientStreamingHandler< ::Chunk, ::Reply>(
           [this] { return this->Upload(); }));
     }
     ~ExperimentalWithCallbackMethod_Upload() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Upload(::grpc::ServerContext* context, ::grpc::ServerReader< ::transferfile::Chunk>* reader, ::transferfile::Reply* response) override {
+    ::grpc::Status Upload(::grpc::ServerContext* context, ::grpc::ServerReader< ::Chunk>* reader, ::Reply* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerReadReactor< ::transferfile::Chunk, ::transferfile::Reply>* Upload() {
+    virtual ::grpc::experimental::ServerReadReactor< ::Chunk, ::Reply>* Upload() {
       return new ::grpc::internal::UnimplementedReadReactor<
-        ::transferfile::Chunk, ::transferfile::Reply>;}
+        ::Chunk, ::Reply>;}
   };
   typedef ExperimentalWithCallbackMethod_Upload<Service > ExperimentalCallbackService;
   template <class BaseClass>
@@ -153,7 +152,7 @@ class TransferFile final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Upload(::grpc::ServerContext* context, ::grpc::ServerReader< ::transferfile::Chunk>* reader, ::transferfile::Reply* response) override {
+    ::grpc::Status Upload(::grpc::ServerContext* context, ::grpc::ServerReader< ::Chunk>* reader, ::Reply* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -170,7 +169,7 @@ class TransferFile final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Upload(::grpc::ServerContext* context, ::grpc::ServerReader< ::transferfile::Chunk>* reader, ::transferfile::Reply* response) override {
+    ::grpc::Status Upload(::grpc::ServerContext* context, ::grpc::ServerReader< ::Chunk>* reader, ::Reply* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -192,7 +191,7 @@ class TransferFile final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Upload(::grpc::ServerContext* context, ::grpc::ServerReader< ::transferfile::Chunk>* reader, ::transferfile::Reply* response) override {
+    ::grpc::Status Upload(::grpc::ServerContext* context, ::grpc::ServerReader< ::Chunk>* reader, ::Reply* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -204,8 +203,6 @@ class TransferFile final {
   typedef Service SplitStreamedService;
   typedef Service StreamedService;
 };
-
-}  // namespace transferfile
 
 
 #endif  // GRPC_transferfile_2eproto__INCLUDED

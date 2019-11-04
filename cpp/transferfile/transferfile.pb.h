@@ -48,26 +48,23 @@ struct TableStruct_transferfile_2eproto {
   static const ::google::protobuf::uint32 offsets[];
 };
 void AddDescriptors_transferfile_2eproto();
-namespace transferfile {
 class Chunk;
 class ChunkDefaultTypeInternal;
 extern ChunkDefaultTypeInternal _Chunk_default_instance_;
 class Reply;
 class ReplyDefaultTypeInternal;
 extern ReplyDefaultTypeInternal _Reply_default_instance_;
-}  // namespace transferfile
 namespace google {
 namespace protobuf {
-template<> ::transferfile::Chunk* Arena::CreateMaybeMessage<::transferfile::Chunk>(Arena*);
-template<> ::transferfile::Reply* Arena::CreateMaybeMessage<::transferfile::Reply>(Arena*);
+template<> ::Chunk* Arena::CreateMaybeMessage<::Chunk>(Arena*);
+template<> ::Reply* Arena::CreateMaybeMessage<::Reply>(Arena*);
 }  // namespace protobuf
 }  // namespace google
-namespace transferfile {
 
 // ===================================================================
 
 class Chunk final :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:transferfile.Chunk) */ {
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Chunk) */ {
  public:
   Chunk();
   virtual ~Chunk();
@@ -175,7 +172,7 @@ class Chunk final :
   ::std::string* release_buffer();
   void set_allocated_buffer(::std::string* buffer);
 
-  // @@protoc_insertion_point(class_scope:transferfile.Chunk)
+  // @@protoc_insertion_point(class_scope:Chunk)
  private:
   class HasBitSetters;
 
@@ -187,7 +184,7 @@ class Chunk final :
 // -------------------------------------------------------------------
 
 class Reply final :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:transferfile.Reply) */ {
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Reply) */ {
  public:
   Reply();
   virtual ~Reply();
@@ -287,7 +284,7 @@ class Reply final :
   ::google::protobuf::int32 length() const;
   void set_length(::google::protobuf::int32 value);
 
-  // @@protoc_insertion_point(class_scope:transferfile.Reply)
+  // @@protoc_insertion_point(class_scope:Reply)
  private:
   class HasBitSetters;
 
@@ -312,41 +309,41 @@ inline void Chunk::clear_buffer() {
   buffer_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& Chunk::buffer() const {
-  // @@protoc_insertion_point(field_get:transferfile.Chunk.buffer)
+  // @@protoc_insertion_point(field_get:Chunk.buffer)
   return buffer_.GetNoArena();
 }
 inline void Chunk::set_buffer(const ::std::string& value) {
   
   buffer_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:transferfile.Chunk.buffer)
+  // @@protoc_insertion_point(field_set:Chunk.buffer)
 }
 #if LANG_CXX11
 inline void Chunk::set_buffer(::std::string&& value) {
   
   buffer_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:transferfile.Chunk.buffer)
+  // @@protoc_insertion_point(field_set_rvalue:Chunk.buffer)
 }
 #endif
 inline void Chunk::set_buffer(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   
   buffer_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:transferfile.Chunk.buffer)
+  // @@protoc_insertion_point(field_set_char:Chunk.buffer)
 }
 inline void Chunk::set_buffer(const void* value, size_t size) {
   
   buffer_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:transferfile.Chunk.buffer)
+  // @@protoc_insertion_point(field_set_pointer:Chunk.buffer)
 }
 inline ::std::string* Chunk::mutable_buffer() {
   
-  // @@protoc_insertion_point(field_mutable:transferfile.Chunk.buffer)
+  // @@protoc_insertion_point(field_mutable:Chunk.buffer)
   return buffer_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* Chunk::release_buffer() {
-  // @@protoc_insertion_point(field_release:transferfile.Chunk.buffer)
+  // @@protoc_insertion_point(field_release:Chunk.buffer)
   
   return buffer_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -357,7 +354,7 @@ inline void Chunk::set_allocated_buffer(::std::string* buffer) {
     
   }
   buffer_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), buffer);
-  // @@protoc_insertion_point(field_set_allocated:transferfile.Chunk.buffer)
+  // @@protoc_insertion_point(field_set_allocated:Chunk.buffer)
 }
 
 // -------------------------------------------------------------------
@@ -369,13 +366,13 @@ inline void Reply::clear_length() {
   length_ = 0;
 }
 inline ::google::protobuf::int32 Reply::length() const {
-  // @@protoc_insertion_point(field_get:transferfile.Reply.length)
+  // @@protoc_insertion_point(field_get:Reply.length)
   return length_;
 }
 inline void Reply::set_length(::google::protobuf::int32 value) {
   
   length_ = value;
-  // @@protoc_insertion_point(field_set:transferfile.Reply.length)
+  // @@protoc_insertion_point(field_set:Reply.length)
 }
 
 #ifdef __GNUC__
@@ -386,7 +383,6 @@ inline void Reply::set_length(::google::protobuf::int32 value) {
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace transferfile
 
 // @@protoc_insertion_point(global_scope)
 
