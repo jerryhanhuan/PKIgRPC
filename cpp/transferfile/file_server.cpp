@@ -49,7 +49,7 @@ Status TransferFileImpl::Upload(ServerContext* context, ServerReader<Chunk>* rea
     //tellg 则用于返回读取位置
     long pos = outfile.tellp();
     outfile.close();
-    Reply->set_length(pos); 
+    response->set_length(pos); 
     return Status::OK;
 }
 
