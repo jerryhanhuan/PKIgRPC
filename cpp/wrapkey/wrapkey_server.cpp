@@ -25,12 +25,12 @@ public:
     Status Wrap(ServerContext *context, const Cipher *request, Cipher *response) override
     {
         string data;
-        cout << "transformation::" << request->transformation << endl;
-        for(auto &msg:request->messages)
+        cout << "transformation::" << request->transformation() << endl;
+        for(auto &msg:request->messages())
         {
             data += msg;
         }
-        cout << "msg:" << endl;
+        cout << "msg:" << data << endl;
         for(auto key:request->wrappingkeys())
         {
             cout << "key::" << key.secret_key() << endl;

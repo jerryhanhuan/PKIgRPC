@@ -4,18 +4,21 @@
 #include <string>
 #include <vector>
 
+
+#include <grpcpp/grpcpp.h>
+#include "wrapkeys.grpc.pb.h"
+
+
+using grpc::Channel;
+using grpc::ClientContext;
+using grpc::Status;
+
+
 using std::cout;
 using std::endl;
 using std::string;
 using std::vector;
 
-#include <grpcpp/grpcpp.h>
-#include "wrapkeys.grpc.pb.h"
-
-using grpc::Server;
-using grpc::ServerBuilder;
-using grpc::ServerContext;
-using grpc::Status;
 
 class WrapkeyClient
 {
