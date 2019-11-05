@@ -49,6 +49,10 @@ all:
 	protoc -I ../protos --grpc_out=transferfile --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` ../protos/transferfile.proto
 	make -C transferfile
 
+	# wrapkeys
+	protoc -I ../protos --cpp_out=wrapkey  ../protos/wrapkeys.proto
+	protoc -I ../protos --grpc_out=wrapkey --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` ../protos/wrapkey.proto
+	make -C wrapkey
 
 .PHONY:clean
 
@@ -62,3 +66,4 @@ clean:
 	make clean -C msgsearch
 	make clean -C pbkdf
 	make clean -C transferfile
+	make clean -C wrapkey

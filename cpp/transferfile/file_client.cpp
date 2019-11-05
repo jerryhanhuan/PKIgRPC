@@ -58,6 +58,7 @@ long TransferFileClient::Upload(const char *filename)
         }
         len += infile.gcount();
     }
+    infile.close();
     //WritesDone() 通知gRPC 我们已经完成输入
     writer->WritesDone();
     Status status = writer->Finish();

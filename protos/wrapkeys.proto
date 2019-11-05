@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+
+//声明grpc服务
+service WrapKey{
+     rpc Wrap (Cipher) returns (Cipher) {}
+}
+
+
+
+message Key {
+    string transformation = 1;
+    int32 key_size = 2;
+    string curve = 3;
+    oneof key {
+        bytes secret_key = 4;
+        KeyPair key_pair = 5;
+    }
+}
+
