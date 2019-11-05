@@ -51,7 +51,7 @@ all:
 
 	# wrapkeys
 	protoc -I ../protos --cpp_out=wrapkey  ../protos/wrapkeys.proto
-	protoc -I ../protos --grpc_out=wrapkey --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` ../protos/wrapkey.proto
+	protoc -I ../protos --grpc_out=wrapkey --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` ../protos/wrapkeys.proto
 	make -C wrapkey
 
 .PHONY:clean
