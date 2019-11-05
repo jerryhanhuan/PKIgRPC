@@ -7,14 +7,15 @@ service WrapKey{
 }
 
 
+message Cipher{
+    string transformation = 1;
+    repeated bytes messages = 2;
+    repeated Key wrappingKeys = 3;
+}
 
 message Key {
     string transformation = 1;
     int32 key_size = 2;
-    string curve = 3;
-    oneof key {
-        bytes secret_key = 4;
-        KeyPair key_pair = 5;
-    }
+    bytes secret_key = 4;
 }
 
